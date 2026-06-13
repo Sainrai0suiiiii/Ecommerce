@@ -6,6 +6,9 @@ import Cart from './pages/Cart'
 import Orders from './pages/Orders'
 import PlaceOrder from './pages/PlaceOrder'
 import NavBar from './components/NavBar'
+import Home from './pages/Home'
+import Contact from './pages/Contact'
+import Product from './pages/Product'
 
 const App = () => {
   return (
@@ -17,7 +20,7 @@ const App = () => {
       <Route path = '/about' element = {<About/>}/>
       <Route path = '/contact' element = {<Contact/>}/>
       <Route path = '/login' element = {<login/>}/>
-      <Route path = '/product:productID' element = {<Product/>}/>
+      <Route path = '/product/ :productID' element = {<Product/>}/>
       <Route path = '/cart' element = {<Cart/>}/>
       <Route path = '/orders' element = {<Orders/>}/>
       <Route path = '/PlaceOrder' element = {<PlaceOrder/>}/>
