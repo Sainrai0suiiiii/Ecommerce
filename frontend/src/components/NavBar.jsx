@@ -1,6 +1,6 @@
 import React from 'react'
 import { assets } from '../assets/assets'
-import { NavLink } from 'react-router-dom'
+import { NavLink,Link } from 'react-router-dom'
 
 const NavBar = () => {
   return (
@@ -36,11 +36,13 @@ const NavBar = () => {
                     <p className='cursor-pointer hover:text-black'>My Profile</p>
                     <p className='cursor-pointer hover:text-black'>Orders</p>
                     <p className='cursor-pointer hover:text-black'>Logout</p>
-                    <p></p>
-                    <p></p>
                 </div>
             </div>
           </div>
+          <Link to = '/cart'className = 'relative'>
+              <img src='assets.cart' className='w-5 min w-5' alt=''/> 
+          </Link>
+
 
         </div>
     </div>
