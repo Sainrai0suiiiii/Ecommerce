@@ -3,6 +3,7 @@ import b from './b.jpg'
 import c from './c.jpg'
 import cart from './cart.png'
 import d from './d.jpg'
+import menu from './menu.png'
 import search from './search.png'
 import user from './user.png'
 
@@ -12,6 +13,7 @@ export const assets = {
   user,
   search,
   cart,
+  menu,
 
   style_street_logo,
 }
