@@ -7,6 +7,7 @@ import menu from './menu.png'
 import search from './search.png'
 import user from './user.png'
 import dropdown from './dropdown.png'
+import hero from './hero.jpg'
 
 import style_street_logo from './style_street_logo.png'
 
@@ -16,6 +17,7 @@ export const assets = {
   cart,
   menu,
   dropdown,
+  hero,
 
   style_street_logo,
 }

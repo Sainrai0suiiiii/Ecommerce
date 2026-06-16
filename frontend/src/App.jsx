@@ -6,6 +6,7 @@ import Collection from './pages/Collection'
 import Contact from './pages/Contact'
 import Home from './pages/Home'
 import * as LoginModule from './pages/Login'
+import Hero from './components/Hero'
 
 import Orders from './pages/Orders'
 
@@ -26,7 +27,8 @@ const App = () => {
         <Route path="/product/:productID" element={<Product />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Orders />} />
-        <Route path="/placeorder" element={<PlaceOrder />} />
+        <Route path="/PlaceOrder" element={<PlaceOrder />} />
+        <Route path ="/Hero" element = {<Hero/>}/>
       </Routes>
     </div>
   )
