@@ -12,10 +12,10 @@ const Hero = () => {
                 Our Bestsellers
               </span>
             </div>
-            <h1 className="text-4xl font-semibold leading-tight text-[#111827] sm:text-5xl lg:text-[4.5rem]">
+            <h1 className=" prata-regular text-4xl font-semibold leading-tight text-[#111827] sm:text-5xl lg:text-[4.5rem]">
               Latest Arrivals
             </h1>
-            <p className="mt-6 max-w-lg text-sm text-[#4b5563] sm:text-base">
+            <p className=" mt-6 max-w-lg text-sm text-[#4b5563] sm:text-base">
               Discover fresh styles designed for effortless streetwear looks and premium everyday comfort.
             </p>
             <div className="mt-10 flex flex-col gap-4 sm:flex-row sm:items-center">
