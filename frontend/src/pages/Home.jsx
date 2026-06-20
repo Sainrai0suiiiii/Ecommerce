@@ -1,13 +1,16 @@
 import React from 'react'
 import Hero from '../components/Hero'
 import LatestCollection from '../components/LatestCollection'
-const home = () => {
+import BestSeller from '../components/BestSeller'
+
+const Home = () => {
   return (
     <div>
-      <Hero/>
-      <LatestCollection/>
+      <Hero />
+      <LatestCollection />
+      <BestSeller />
     </div>
   )
 }
 
-export default home
+export default Home
