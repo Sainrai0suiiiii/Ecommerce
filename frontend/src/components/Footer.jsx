@@ -27,7 +27,12 @@ const Footer = () => {
                     <li>STREET_FASHION@gmail.com</li>
                 </ul>
             </div> 
+            
         </div>
+        <div>
+                <hr/>
+                <p className='py-5 text-sm text-center'>Copyright 2026@stylestreet All-Rights Reserved.</p>
+            </div>
     </div>
   )
 }
