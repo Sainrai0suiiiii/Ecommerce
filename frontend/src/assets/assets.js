@@ -16,6 +16,7 @@ import user from './user.png'
 import dropdown from './dropdown.png'
 import hero from './hero.jpg'
 import style_street_logo from './style_street_logo.png'
+import transfer from './transfer.png'
 
 export const assets = {
   user,
@@ -25,6 +26,7 @@ export const assets = {
   dropdown,
   hero,
   style_street_logo,
+  transfer,
 }
 
 export const products = [
