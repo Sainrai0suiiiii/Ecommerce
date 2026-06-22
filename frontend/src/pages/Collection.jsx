@@ -53,6 +53,8 @@ const Collection = () => {
       {/* right side */}
 
       
+
+
     </div>
   )
 }
