@@ -7,8 +7,9 @@ const ShopContextProvider =(props)=>{
     const delivery_fee=10;
 
     const value = {
-        products
-
+        products,
+        currency,
+        delivery_fee,
     }
     return(
         <ShopContext.Provider value = {value}>
