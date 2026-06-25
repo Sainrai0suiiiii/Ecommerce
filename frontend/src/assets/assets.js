@@ -14,6 +14,7 @@ import menu from './menu.png'
 import search from './search.png'
 import user from './user.png'
 import dropdown from './dropdown.png'
+import close from './close.png'
 import hero from './hero.jpg'
 import style_street_logo from './style_street_logo.png'
 import transfer from './transfer.png'
@@ -24,6 +25,7 @@ export const assets = {
   cart,
   menu,
   dropdown,
+  close,
   hero,
   style_street_logo,
   transfer,

@@ -6,35 +6,54 @@ import { ShopContext } from '../context/ShopContext';
 
 const Collection = () => {
 
-  const {products} = useContext(ShopContext);
+  const {products, search} = useContext(ShopContext);
   const [showFilter, setShowFilter] = useState(false);
   const [filerProducts,setFilterProducts]  = useState([]);
   const [category,setCategory] = useState([]);
   const [subCategory,setSubCategory] = useState([]);
   const [sortType,setSortType] = useState('relevant');
+
+  const normalizeValue = (value) => value?.toString().trim().toLowerCase();
+
+  const matchesSearch = (item) => {
+    if (!search.trim()) return true;
+
+    const query = normalizeValue(search);
+    const haystack = [item.name, item.description, item.category, item.subCategory]
+      .join(' ')
+      .toLowerCase();
+
+    return haystack.includes(query);
+  };
   
   const toggleCategory = (e) =>{
-    const value = e.target.value;
+    const value = normalizeValue(e.target.value);
     setCategory(prev => (prev.includes(value) ? prev.filter(item => item !== value) : [...prev, value]));
   }
 
   const toggleSubCategory = (e) =>{
-    if (subCategory.includes(e.target.value)){
-      setSubCategory(prev => prev.filter(item => item !== e.target.value))
+    const value = normalizeValue(e.target.value);
+    if (subCategory.includes(value)){
+      setSubCategory(prev => prev.filter(item => item !== value))
 
     }else{
-      setSubCategory(prev => [...prev,e.target.value])
+      setSubCategory(prev => [...prev,value])
     }
   }
 
   const applyFilter = () =>{
     let productsCopy = products.slice();
+
+    if (search.trim()) {
+      productsCopy = productsCopy.filter(matchesSearch);
+    }
+
     if(category.length>0){
-      productsCopy = productsCopy.filter(item => category.includes(item.category));
+      productsCopy = productsCopy.filter(item => category.includes(normalizeValue(item.category)));
     }
 
     if(subCategory.length>0){
-      productsCopy = productsCopy.filter(item => subCategory.includes(item.subCategory));
+      productsCopy = productsCopy.filter(item => subCategory.includes(normalizeValue(item.subCategory)));
     }
 
     return productsCopy;
@@ -71,10 +90,10 @@ const Collection = () => {
   },[])
 
   useEffect (()=>{
-    // whenever filters or sort changes, recompute list
+    // whenever filters, search, or sort changes, recompute list
     const filtered = applyFilter();
     sortAndSetProducts(filtered);
-  },[category,subCategory,sortType])
+  },[category,subCategory,sortType,search])
 
   return (
     
@@ -90,28 +109,28 @@ const Collection = () => {
           <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
-              <input className='w-3' type ="checkbox" value={'Men'}onChange={toggleCategory}/>Men
+              <input className='w-3' type ="checkbox" value={'men'} checked={category.includes('men')} onChange={toggleCategory}/>Men
             </p>
             <p className='flex gap-2'>
-              <input className='w-3' type ="checkbox" value={'Women'} onChange={toggleCategory}/>Women
+              <input className='w-3' type ="checkbox" value={'women'} checked={category.includes('women')} onChange={toggleCategory}/>Women
             </p>
             <p className='flex gap-2'>
-              <input className='w-3' type ="checkbox" value={'Kid'}onChange={toggleCategory}/>Kid
+              <input className='w-3' type ="checkbox" value={'kids'} checked={category.includes('kids')} onChange={toggleCategory}/>Kids
             </p>
           </div>
         </div>
         {/* sub-category filter */} 
         <div className={`border border-gray-30 pl-5 py-3 mt-5 ${showFilter ? '':'hidden'} sm:block`}>
-          <p className='mb-3 text-sm font-medium'>CATEGORIES</p>
+          <p className='mb-3 text-sm font-medium'>TYPE</p>
           <div className='flex flex-col gap-2 text-sm font-light text-gray-700'>
             <p className='flex gap-2'>
-              <input className='w-3' type ="checkbox" value={'Topwear'} onChange={toggleSubCategory}/>Topwear
+              <input className='w-3' type ="checkbox" value={'topwear'} checked={subCategory.includes('topwear')} onChange={toggleSubCategory}/>Topwear
             </p>
             <p className='flex gap-2'>
-              <input className='w-3' type ="checkbox" value={'Bottomwear'}onChange={toggleSubCategory}/>Bottomwear
+              <input className='w-3' type ="checkbox" value={'bottomwear'} checked={subCategory.includes('bottomwear')} onChange={toggleSubCategory}/>Bottomwear
             </p>
             <p className='flex gap-2'>
-              <input className='w-3' type ="checkbox" value={'Winterwear'} onChange={toggleSubCategory}/>Winterwear
+              <input className='w-3' type ="checkbox" value={'full outfit'} checked={subCategory.includes('full outfit')} onChange={toggleSubCategory}/>Full Outfit
             </p>
           </div>
         </div>
@@ -132,13 +151,18 @@ const Collection = () => {
           </select>
         </div>
         {/* Map Products */}
-        <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
-          {
-            filerProducts.map((item,index)=>(
-              <ProductItem key={index} name={item.name} id={item._id} price={item.price} image={item.image}/>
-            ))
-          }
-        </div>
+        {filerProducts.length > 0 ? (
+          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 gap-y-6'>
+            {
+              filerProducts.map((item,index)=>(
+                <ProductItem key={index} name={item.name} id={item._id} price={item.price} image={item.image}/>
+              ))
+            }
+          </div>
+        ) : (
+          <div className='py-10 text-center text-gray-500'>No products match your search and filters.</div>
+        )}
+
       </div>
     </div>
   )
