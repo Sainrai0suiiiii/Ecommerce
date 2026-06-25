@@ -1,9 +1,11 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { assets } from '../assets/assets';
 import { ShopContext } from '../context/ShopContext';
 
+
 const SearchBar = () => {
   const { search, setSearch, showSearch, setShowSearch } = useContext(ShopContext);
+ 
 
   const handleClose = () => {
     setSearch('');
@@ -15,6 +17,7 @@ const SearchBar = () => {
       handleClose();
     }
   };
+
 
   if (!showSearch) return null;
 
