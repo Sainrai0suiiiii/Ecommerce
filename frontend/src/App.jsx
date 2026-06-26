@@ -14,6 +14,7 @@ import Footer from './components/Footer'
 import SearchBar from './components/SearchBar'
 import PlaceOrder from './pages/PlaceOrder'
 import Product from './pages/Product'
+import Profile from './pages/Profile'
 
 const App = () => {
   return (
@@ -28,6 +29,7 @@ const App = () => {
         <Route path="/login" element={<LoginModule.default />} />
 
         <Route path="/product/:productID" element={<Product />} />
+        <Route path="/profile" element={<Profile />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/PlaceOrder" element={<PlaceOrder />} />
